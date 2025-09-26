@@ -1,6 +1,8 @@
 package net.Fruits555000.chemically_experimental;
 
 import com.mojang.logging.LogUtils;
+import net.Fruits555000.chemically_experimental.item.ModCreativeModeTabs;
+import net.Fruits555000.chemically_experimental.item.ModItems;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -28,6 +30,10 @@ public class ChemicallyExperimentalMod {
         modEventBus.addListener(this::commonSetup);
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
+
+        ModCreativeModeTabs.register(modEventBus);
+
+        ModItems.register(modEventBus);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
