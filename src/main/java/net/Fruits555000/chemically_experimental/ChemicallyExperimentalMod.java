@@ -1,8 +1,13 @@
 package net.Fruits555000.chemically_experimental;
 
 import com.mojang.logging.LogUtils;
+import net.Fruits555000.chemically_experimental.block.ModBlocks;
+import net.Fruits555000.chemically_experimental.block.entity.ModBlockEntities;
 import net.Fruits555000.chemically_experimental.item.ModCreativeModeTabs;
 import net.Fruits555000.chemically_experimental.item.ModItems;
+import net.Fruits555000.chemically_experimental.screen.ModMenuTypes;
+import net.Fruits555000.chemically_experimental.screen.custom.CompoundCreatorScreen;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -34,6 +39,11 @@ public class ChemicallyExperimentalMod {
         ModCreativeModeTabs.register(modEventBus);
 
         ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
+
+        ModBlockEntities.register(modEventBus);
+
+        ModMenuTypes.register(modEventBus);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
@@ -61,7 +71,7 @@ public class ChemicallyExperimentalMod {
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-
+            MenuScreens.register(ModMenuTypes.COMPOUND_CREATOR_MENU.get(), CompoundCreatorScreen::new);
         }
     }
 }

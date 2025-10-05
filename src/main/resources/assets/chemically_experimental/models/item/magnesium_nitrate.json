@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "chemically_experimental:item/compound/yellow_jar"
+    "layer0": "chemically_experimental:item/compounds/yellow_jar"
   }
 }
